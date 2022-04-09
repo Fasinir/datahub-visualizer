@@ -1,5 +1,6 @@
 <div id="app_content">
   <div id="container_mobile">
+    
     <div id="main-chart-title">
       <span>Wykres</span>
     </div>
@@ -8,14 +9,15 @@
     </div>
   </div>
   <div id="container_desktop">
-    <app-tile></app-tile>
-    <app-tile></app-tile>
-    <app-tile></app-tile>
-    <app-tile></app-tile>
-    <app-tile></app-tile>
-    <app-tile></app-tile>
-    <app-tile></app-tile>
-    <app-tile></app-tile>
-    <app-tile></app-tile>
+    <app-tile [chartLabels]="this.chartData.labels" [chartDataset]="this.chartData.datasets"></app-tile>
+    <app-tile [chartLabels]="this.chartData.labels" [chartDataset]="this.chartData.datasets"></app-tile>
+    <app-tile [chartLabels]="this.chartData.labels" [chartDataset]="this.chartData.datasets"></app-tile>
+    <app-tile [chartLabels]="this.chartData.labels" [chartDataset]="this.chartData.datasets"></app-tile>
+    <app-tile [chartLabels]="this.chartData.labels" [chartDataset]="this.chartData.datasets"></app-tile>
+    <app-tile [chartLabels]="this.chartData.labels" [chartDataset]="this.chartData.datasets"></app-tile>
+    <app-tile [chartLabels]="this.chartData.labels" [chartDataset]="this.chartData.datasets"></app-tile>
+    <app-tile [chartLabels]="this.chartData.labels" [chartDataset]="this.chartData.datasets"></app-tile>
+    <app-tile [chartLabels]="this.chartData.labels" [chartDataset]="this.chartData.datasets"></app-tile>
+    <app-tile [chartLabels]="this.chartData.labels" [chartDataset]="this.chartData.datasets"></app-tile>
   </div>
 </div>

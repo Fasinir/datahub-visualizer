@@ -14,7 +14,7 @@
 
 
 .tile-container {
-  width: calc(1440px / 6);
+  width: calc(1440px / 5);
   height: calc(1440px / 6);
   background-color: var(--main-color-light);
   border-radius: 5px;
@@ -35,5 +35,5 @@
 }
 
 .tile-image img {
-  width: 80%;
+  width: 100%;
 }
