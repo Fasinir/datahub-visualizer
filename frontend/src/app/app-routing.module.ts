@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoadConfigPageComponent } from './components/load-config-page/load-config-page.component';
+import { LoadFileButtonComponent } from './components/load-file-button/load-file-button.component';
+
 
 const routes: Routes = [
-  { path: 'loadConfig', component: LoadConfigPageComponent }
+  { path: 'loadConfig', component: LoadFileButtonComponent }
 ];
 
 @NgModule({
