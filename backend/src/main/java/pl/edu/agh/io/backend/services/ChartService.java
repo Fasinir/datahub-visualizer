@@ -28,8 +28,8 @@ public class ChartService {
         List<Double> pm2_5 = new ArrayList<>();
         List<Double> pm10 = new ArrayList<>();
 
-        for(int i = 0; i < dataJson.results().size(); i++) {
-            LinkedHashMap<String, Object> sample = (LinkedHashMap<String, Object>) dataJson.results().get(i);
+        for(var i: dataJson.results()) {
+            LinkedHashMap<String, Object> sample = (LinkedHashMap<String, Object>) i;
             chartData.addLabel(((String) sample.get("timestamp")).substring(11, 19));
 
             LinkedHashMap<String, Object> data = (LinkedHashMap<String, Object>) sample.get("data");
