@@ -17,10 +17,11 @@ export class LoadFileButtonComponent implements OnInit {
 
   onFileSelected(event) {
     this.selectedFile = <File>event.target.files[0];
-    console.log("Loaded file")
-    console.log(this.selectedFile)
-    this.onUpload()
+    console.log("Loaded file");
+    console.log(this.selectedFile);
+    this.onUpload();
   }
+
 
   onUpload() {
     const fd = new FormData();
@@ -37,5 +38,6 @@ export class LoadFileButtonComponent implements OnInit {
     */
     console.log("Upload successful")
   }
+
 
 }
