@@ -24,26 +24,43 @@ public class ChartService {
 
     private void createChartData(DataJson dataJson) {
         chartData = new ChartData(new ArrayList(), new LinkedHashMap());
-        List<Double> pm1 = new ArrayList<>();
-        List<Double> pm2_5 = new ArrayList<>();
-        List<Double> pm10 = new ArrayList<>();
 
+        //dataCategories is a list with strings and with another list in the last position
+        //list at the last positions allows to create chart with many values
+
+        //list is splitted into two lists: first with common path, second with specific names
+        List<Object> dataCategories = new ArrayList<>(jsonConfig.getDataCategory());
+        List<String> specificCategories = (List<String>) dataCategories.get(dataCategories.size()-1);
+        dataCategories.remove(dataCategories.size()-1);
+
+        //creating 2d array for demanded chart data
+        List<List<Double>> collectedData = new ArrayList<>(specificCategories.size());
+        for(int i = 0; i < specificCategories.size(); i++) {
+            collectedData.add(new ArrayList<Double>());
+        }
+
+        //filling array with datahub data
         for(var i: dataJson.results()) {
+            //timestamps
             LinkedHashMap<String, Object> sample = (LinkedHashMap<String, Object>) i;
             chartData.addLabel(((String) sample.get("timestamp")).substring(11, 19));
 
-            LinkedHashMap<String, Object> data = (LinkedHashMap<String, Object>) sample.get("data");
-            LinkedHashMap<String, Object> particles = (LinkedHashMap<String, Object>) data.get("particleConcentrationSensor");
-            LinkedHashMap<String, Object> concentration = (LinkedHashMap<String, Object>) particles.get("concentration");
+            //going deep through path to reach the data
+            LinkedHashMap<String, Object> temp = (LinkedHashMap<String, Object>) sample.get("data");
+            for(var j: dataCategories) {
+                temp = (LinkedHashMap<String, Object>) temp.get((String) j);
+            }
 
-            pm1.add((Double) concentration.get("pm1"));
-            pm2_5.add((Double) concentration.get("pm2_5"));
-            pm10.add((Double) concentration.get("pm10"));
+            //getting specific data
+            for(int j = 0; j < specificCategories.size(); j++) {
+                collectedData.get(j).add((Double) temp.get(specificCategories.get(j)));
+            }
         }
 
-        chartData.addDataset("pm1", pm1);
-        chartData.addDataset("pm2_5", pm2_5);
-        chartData.addDataset("pm10", pm10);
+        //assigning our data to chartData class
+        for(int i = 0; i < specificCategories.size(); i++) {
+            chartData.addDataset(specificCategories.get(i), collectedData.get(i));
+        }
     }
 
     public ChartData getChartData() {
