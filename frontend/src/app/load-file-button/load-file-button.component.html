@@ -1,0 +1,4 @@
+<input style="display: none;" type="file" (change)="onFileSelected($event)" accept=".json" #fileInput>
+<button class="btn" type="button" (click)="fileInput.click()">
+    Upload config
+</button>
