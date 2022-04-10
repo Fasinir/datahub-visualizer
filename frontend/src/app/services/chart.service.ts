@@ -11,7 +11,6 @@ export class ChartService {
   constructor() { }
 
   notifyAboutLoadedData(chartData: any){
-    console.log(chartData);
     this.loadedData.next(chartData);
   }
 }
