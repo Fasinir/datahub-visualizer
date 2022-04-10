@@ -1,0 +1,110 @@
+{
+	"id": "91dc8497-f649-2e68-6598-b034052fce2f",
+	"name": "IO",
+	"description": "",
+	"order": [
+		"7cf6ca27-9da4-82d1-653d-c05b9ad4c152",
+		"0d9c9626-99ed-3bd9-9dcc-218286711e63",
+		"638211c6-c243-1427-cd42-c446209a1cb4"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1649583694857,
+	"owner": "20112933",
+	"public": false,
+	"requests": [
+		{
+			"id": "0d9c9626-99ed-3bd9-9dcc-218286711e63",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/config",
+			"queryParams": [
+				{
+					"key": "endPointURL",
+					"value": "https://datahub.ki.agh.edu.pl/api/endpoints/70/data/",
+					"equals": true,
+					"description": "",
+					"enabled": false
+				}
+			],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "91dc8497-f649-2e68-6598-b034052fce2f",
+			"data": [],
+			"dataMode": "raw",
+			"name": "post 2",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1649583733031,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\r\n\t\"endpointURL\": \"https://datahub.ki.agh.edu.pl/api/endpoints/74/data/\",\r\n\t\"dataCategory\": [\"particleConcentrationSensor\", \"concentration\", [\"pm1\", \"pm2_5\", \"pm10\"]]\r\n}"
+		},
+		{
+			"id": "638211c6-c243-1427-cd42-c446209a1cb4",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:8080/chart",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "91dc8497-f649-2e68-6598-b034052fce2f",
+			"data": null,
+			"dataMode": "params",
+			"name": "get",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1649583745402,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "7cf6ca27-9da4-82d1-653d-c05b9ad4c152",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/config",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "91dc8497-f649-2e68-6598-b034052fce2f",
+			"data": [],
+			"dataMode": "raw",
+			"name": "post 1",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1649583696748,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\r\n\t\"endpointURL\": \"https://datahub.ki.agh.edu.pl/api/endpoints/74/data/\",\r\n\t\"dataCategory\": [\"heater\", [\"tempSet\", \"tempRead\", \"powerLevelAverage\"]]\r\n}"
+		}
+	]
+}
