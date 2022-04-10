@@ -4,10 +4,10 @@
   align-items: center;
   background-color: var(--main-color-dark);
   min-height: calc(100vh - 90px);
-  
-  flex: 1;
-
   padding: 20px 0;
 }
-
-
+#burger_menu app-menu-chart-choice {
+  padding: 20px 0;
+  flex: 1;
+  max-height: 120px;
+}
