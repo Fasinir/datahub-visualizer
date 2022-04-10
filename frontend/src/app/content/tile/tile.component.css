@@ -1,0 +1,39 @@
+.tile-header {
+  text-align: center;
+}
+
+.tile-header span {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+  text-align: center;
+  color: var(--main-color-dark);
+}
+
+
+.tile-container {
+  width: calc(1440px / 5);
+  height: calc(1440px / 6);
+  background-color: var(--main-color-light);
+  border-radius: 5px;
+  padding: 20px;
+  transition: opacity 0.3s ease;
+}
+
+.tile-container:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.tile-image {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tile-image img {
+  width: 100%;
+}

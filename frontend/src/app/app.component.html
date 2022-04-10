@@ -1,7 +1,6 @@
-<div>
-  <h1>
-    Hello World!
-  </h1>
+<div class="app">
+  <app-banner (change)="onMenuChange($event)"></app-banner>
+  <app-content [hidden]="menuVisible"></app-content>
+  <app-menu *ngIf="menuVisible"></app-menu>
+  <app-footer></app-footer>
 </div>
-
-<router-outlet></router-outlet>
