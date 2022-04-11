@@ -6,6 +6,7 @@ import pl.edu.agh.io.backend.services.ChartService;
 import pl.edu.agh.io.backend.entities.JsonConfig;
 
 @RestController
+@CrossOrigin("http://localhost:4200")
 public class ChartController {
     private final ChartService chartService;
 
