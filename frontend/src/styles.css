@@ -42,7 +42,7 @@ body {
 
 @media (min-width: 768px) {
   /* Hide mobile */
-  #burger_menu, #container_mobile {
+  #container_mobile {
     display: none;
   }
 
