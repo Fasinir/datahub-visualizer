@@ -1,4 +1,2 @@
-<input style="display: none;" type="file" (change)="onFileSelected($event)" accept=".json" #fileInput>
-<button class="btn" type="button" (click)="fileInput.click()">
-    Upload config
-</button>
+<input type="file" (change)="onFileSelected($event)" accept=".json" #fileInput>
+<img src="/assets/images/dirIcon.svg" class="btn" alt="selectJsonIcon" (click)="fileInput.click()">

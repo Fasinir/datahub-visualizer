@@ -18,7 +18,7 @@ export class LoadFileButtonComponent implements OnInit {
   onFileSelected(event: any) {
     const selectedFile = <File> event.target.files[0];
     let fileReader = new FileReader();
-    var postParameter;
+    let postParameter;
     fileReader.onload = () => {
       console.log(fileReader.result);
       postParameter = JSON.parse(<string> fileReader.result);
@@ -27,11 +27,6 @@ export class LoadFileButtonComponent implements OnInit {
           .subscribe(data => { this.chartService.notifyAboutLoadedData(data) }));
     }
     fileReader.readAsText(selectedFile);
-
     console.log(postParameter);
-
-
   }
-
-
 }
