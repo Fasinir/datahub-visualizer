@@ -17,10 +17,7 @@ export class BannerComponent implements OnInit {
 
   ngOnInit(): void {
     //sending config and getting data
-    this.dataService.postConfigFile(null)
-    .subscribe(
-      _ => this.dataService.getChartsData()
-      .subscribe(data => {this.chartService.notifyAboutLoadedData(data)}));
+    
   }
 
   showMenuClick() {

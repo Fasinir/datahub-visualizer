@@ -13,13 +13,13 @@ export class DataService {
   }
 
   public postConfigFile(file: any): Observable<any> {
-    file = {
-      "endpointURL": "https://datahub.ki.agh.edu.pl/api/endpoints/74/data/"
-    }
-    return this.http.post<any>(this.url+"/"+"config",file);
+    
+
+    //console.log(JSON.stringify(file));
+    return this.http.post<any>(this.url + "/" + "config", file);
   }
 
   public getChartsData(): Observable<any> {
-    return this.http.get<any>(this.url+"/chart");
+    return this.http.get<any>(this.url + "/chart");
   }
 }

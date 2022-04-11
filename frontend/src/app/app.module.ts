@@ -11,6 +11,7 @@ import { MenuComponent } from './content/menu/menu.component';
 import { MenuChartChoiceComponent } from './content/menu/menu-chart-choice/menu-chart-choice.component';
 import { ChartComponent } from './content/chart/chart.component';
 import { NgChartsModule } from 'ng2-charts';
+import { LoadFileButtonComponent } from './load-file-button/load-file-button.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +21,8 @@ import { NgChartsModule } from 'ng2-charts';
     FooterComponent,
     MenuComponent,
     MenuChartChoiceComponent,
-    ChartComponent
+    ChartComponent,
+    LoadFileButtonComponent
   ],
   imports: [
     BrowserModule,
