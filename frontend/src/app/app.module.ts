@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BannerComponent } from './banner/banner.component';
@@ -11,7 +11,7 @@ import { MenuComponent } from './content/menu/menu.component';
 import { MenuChartChoiceComponent } from './content/menu/menu-chart-choice/menu-chart-choice.component';
 import { ChartComponent } from './content/chart/chart.component';
 import { NgChartsModule } from 'ng2-charts';
-import { LoadFileButtonComponent } from './load-file-button/load-file-button.component';
+import { LoadFileButtonComponent } from './banner/load-file-button/load-file-button.component';
 @NgModule({
   declarations: [
     AppComponent,
