@@ -7,8 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class TileComponent implements OnInit {
 
-  constructor() { }
-
+  @Input() chartType: string = "placeholder";
   @Input() chartLabels: string[] =[];
   @Input() chartDataset: any;
 
