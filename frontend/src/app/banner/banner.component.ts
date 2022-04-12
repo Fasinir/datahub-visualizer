@@ -1,6 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { ChartService } from '../services/chart.service';
-import { DataService } from '../services/data.service';
+import {Component, OnInit, EventEmitter, Output} from '@angular/core';
 
 @Component({
   selector: 'app-banner',
@@ -9,19 +7,20 @@ import { DataService } from '../services/data.service';
 })
 export class BannerComponent implements OnInit {
 
-  constructor(private dataService: DataService, private chartService: ChartService) { }
+  constructor() {
+  }
 
   menuVisible: boolean = false;
 
-  @Output() change: EventEmitter<boolean> = new EventEmitter();
+  @Output() menuEmitter: EventEmitter<boolean> = new EventEmitter();
 
   ngOnInit(): void {
     //sending config and getting data
-    
+
   }
 
   showMenuClick() {
     this.menuVisible = !this.menuVisible;
-    this.change.emit(this.menuVisible);
+    this.menuEmitter.emit(this.menuVisible);
   }
 }

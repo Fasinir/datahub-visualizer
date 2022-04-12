@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
+import {Component} from '@angular/core';
+import {BreakpointObserver, BreakpointState} from '@angular/cdk/layout';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -16,9 +17,9 @@ export class AppComponent {
       "(min-width: 768px)"
     ]).subscribe((result: BreakpointState) => {
       if (result.matches) {
-          this.menuVisible = false;    
+        this.menuVisible = false;
       } else {
-          // show stuff
+        // show stuff
       }
     });
   }

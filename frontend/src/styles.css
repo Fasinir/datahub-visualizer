@@ -16,10 +16,6 @@
   --main-color-gray: #404040;
 }
 
-html,
-body {
-}
-
 body {
   background-color: var(--main-color-dark);
 }
@@ -44,12 +40,9 @@ body {
   }
 }
 
-@media (min-width: 568px) {
-}
-
 @media (min-width: 768px) {
   /* Hide mobile */
-  #burger_menu, #container_mobile {
+  #container_mobile {
     display: none;
   }
 
@@ -64,14 +57,4 @@ body {
   .app_header > .container-fluid {
     flex-direction: row;
   }
-}
-
-
-@media (min-width: 992px) {
-}
-
-@media (min-width: 1366px) {
-}
-
-@media (min-width: 1680px) {
 }
