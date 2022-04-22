@@ -4,19 +4,12 @@
       <span>Wykres</span>
     </div>
     <div id="main-chart">
-      <img src="/assets/images/charts/chartPlaceholder.png" alt="chartPlaceholder"/>
+      <img src="/assets/images/charts/placeholderChartIcon.png" alt="chartPlaceholder"/>
     </div>
   </div>
   <div id="container_desktop">
-    <app-tile [chartLabels]="this.chartData.labels" [chartDataset]="this.chartData.datasets"></app-tile>
-    <app-tile [chartLabels]="this.chartData.labels" [chartDataset]="this.chartData.datasets"></app-tile>
-    <app-tile [chartLabels]="this.chartData.labels" [chartDataset]="this.chartData.datasets"></app-tile>
-    <app-tile [chartLabels]="this.chartData.labels" [chartDataset]="this.chartData.datasets"></app-tile>
-    <app-tile [chartLabels]="this.chartData.labels" [chartDataset]="this.chartData.datasets"></app-tile>
-    <app-tile [chartLabels]="this.chartData.labels" [chartDataset]="this.chartData.datasets"></app-tile>
-    <app-tile [chartLabels]="this.chartData.labels" [chartDataset]="this.chartData.datasets"></app-tile>
-    <app-tile [chartLabels]="this.chartData.labels" [chartDataset]="this.chartData.datasets"></app-tile>
-    <app-tile [chartLabels]="this.chartData.labels" [chartDataset]="this.chartData.datasets"></app-tile>
-    <app-tile [chartLabels]="this.chartData.labels" [chartDataset]="this.chartData.datasets"></app-tile>
+    <app-tile [chartType]='"arrow"'></app-tile>
+    <app-tile [chartType]='"pie"'></app-tile>
+    <app-tile [chartType]='"scatter"'></app-tile>
   </div>
 </div>
