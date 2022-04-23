@@ -20,6 +20,10 @@ body {
   background-color: var(--main-color-dark);
 }
 
+.chart_modal{
+  z-index: 1060;
+}
+
 /* breakpoints */
 @media (min-width: 0) {
   /* Hide desktop */
