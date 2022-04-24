@@ -1,49 +1,44 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
-import { ChartData, ChartOptions } from 'chart.js';
+import {Component, Input, OnChanges} from '@angular/core';
+import {ChartOptions} from 'chart.js';
+
 @Component({
-  selector: 'app-chart',
-  templateUrl: './chart.component.html',
-  styleUrls: ['./chart.component.css']
+  selector: 'app-chart', templateUrl: './chart.component.html', styleUrls: ['./chart.component.css']
 })
 export class ChartComponent implements OnChanges {
 
-  
-  constructor() {
 
-  }
-  ngOnChanges(): void {
-    console.log(this.chartDataset);
-    this.mapData();
-    
-  }
   chartType = 'line';
-
   @Input() chartDataset: number[][] = [];
   @Input() labels: string[] = [];
-
-  chartDatasets: {data: number[], label: string}[] = [];
-
-
+  chartDatasets: { data: number[], label: string }[] = [];
   chartOptions: ChartOptions = {
-    responsive: true,
-    color: 'black',
-    scales: {
-      x:{
-        ticks:{
-          color:'black',
+    responsive: true, color: 'black', scales: {
+      x: {
+        reverse: true,
+        ticks: {
+          color: 'black',
         }
-      },
-      y:{
-        ticks:{
-          color:'black',
+      }, y: {
+        ticks: {
+          color: 'black',
         }
       }
     }
 
   };
 
+  constructor() {
+
+  }
+
+  ngOnChanges(): void {
+    console.log(this.chartDataset);
+    this.mapData();
+
+  }
+
   chartClicked(event: any) {
- 
+
   }
 
   chartHovered(event: any) {
@@ -51,11 +46,10 @@ export class ChartComponent implements OnChanges {
   }
 
   mapData() {
-    if(this.chartDataset){
-      for(let [key, value] of Object.entries(this.chartDataset)){
-        this.chartDatasets.push({ data: value, label: key });
+    if (this.chartDataset) {
+      for (let [key, value] of Object.entries(this.chartDataset)) {
+        this.chartDatasets.push({data: value, label: key});
       }
     }
-   
   }
 }

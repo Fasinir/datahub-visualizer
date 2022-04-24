@@ -12,6 +12,9 @@ import { MenuChartChoiceComponent } from './content/menu/menu-chart-choice/menu-
 import { ChartComponent } from './content/chart/chart.component';
 import { NgChartsModule } from 'ng2-charts';
 import { LoadFileButtonComponent } from './banner/load-file-button/load-file-button.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ModalComponent } from './content/modal/modal.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,9 +25,11 @@ import { LoadFileButtonComponent } from './banner/load-file-button/load-file-but
     MenuComponent,
     MenuChartChoiceComponent,
     ChartComponent,
-    LoadFileButtonComponent
+    LoadFileButtonComponent,
+    ModalComponent
   ],
   imports: [
+    NgbModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,

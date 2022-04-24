@@ -20,6 +20,20 @@ body {
   background-color: var(--main-color-dark);
 }
 
+.chart_modal{
+  z-index: 1060;
+}
+
+.modal-dialog {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow-y: auto;
+  min-height: calc(100vh - 60px);
+  max-width: calc(80vw);
+}
+
+
 /* breakpoints */
 @media (min-width: 0) {
   /* Hide desktop */

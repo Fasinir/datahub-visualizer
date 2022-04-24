@@ -1,9 +1,9 @@
 <div class="chart-wrapper">
-    <canvas baseChart 
-        [datasets]="chartDatasets" 
-        [labels]="labels" 
+    <canvas baseChart
+        [datasets]="chartDatasets"
+        [labels]="labels"
         [options]="chartOptions"
-        [legend]="true" 
+        [legend]="true"
         [type]="'line'"
         (chartHover)="chartHovered($event)"
        (chartClick)="chartClicked($event)">
