@@ -5,22 +5,24 @@ import pl.edu.agh.io.backend.entities.ChartData;
 import pl.edu.agh.io.backend.services.ChartService;
 import pl.edu.agh.io.backend.entities.JsonConfig;
 
+import javax.validation.Valid;
+
 @RestController
 @CrossOrigin("http://localhost:4200")
 public class ChartController {
     private final ChartService chartService;
 
-    private ChartController(ChartService chartService) {
+    ChartController(ChartService chartService) {
         this.chartService = chartService;
     }
 
     @GetMapping("/chart")
-    private ChartData chartData() {
+    public ChartData chartData() {
         return chartService.getChartData();
     }
 
     @PostMapping(value = "/config")
-    private JsonConfig loadConfig(@RequestBody JsonConfig jsonConfig) {
+    public JsonConfig loadConfig(@Valid @RequestBody JsonConfig jsonConfig) {
         chartService.loadData(jsonConfig);
         return jsonConfig;
     }
