@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {catchError, Observable, throwError} from 'rxjs';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -13,10 +14,11 @@ export class DataService {
   }
 
   public postConfigFile(file: any): Observable<any> {
-    
+    return this.http.post<any>(this.url + "/config", file).pipe(catchError(this.handleError));
+  }
 
-    //console.log(JSON.stringify(file));
-    return this.http.post<any>(this.url + "/" + "config", file);
+  handleError(error: HttpErrorResponse) {
+    return throwError(error);
   }
 
   public getChartsData(): Observable<any> {
