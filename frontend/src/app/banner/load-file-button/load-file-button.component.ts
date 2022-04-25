@@ -1,5 +1,5 @@
 import {HttpClient} from '@angular/common/http';
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {ChartService} from '../../services/chart.service';
 import {DataService} from '../../services/data.service';
 
@@ -9,6 +9,9 @@ import {DataService} from '../../services/data.service';
   styleUrls: ['./load-file-button.component.css']
 })
 export class LoadFileButtonComponent implements OnInit {
+
+  @ViewChild('fileInput')
+  fileInput!: ElementRef;
 
   constructor(private http: HttpClient, private dataService: DataService, private chartService: ChartService) {
   }
@@ -23,15 +26,18 @@ export class LoadFileButtonComponent implements OnInit {
     fileReader.onload = () => {
       postParameter = JSON.parse(<string>fileReader.result);
       this.dataService.postConfigFile(postParameter).subscribe(
-        (response) => this.dataService.getChartsData()
+        (_) => this.dataService.getChartsData()
           .subscribe(
             data => {
               this.chartService.notifyAboutLoadedData(data);
+              console.log("DATA LOADED")
             }),
         (error) => {
-          alert("ERROR");
-        }
-      )
+          alert(error.message);
+        },
+      ).add(() => {
+        this.fileInput.nativeElement.value = "";
+      });
     }
     fileReader.readAsText(selectedFile);
   }
