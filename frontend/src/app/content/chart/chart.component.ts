@@ -32,7 +32,6 @@ export class ChartComponent implements OnChanges {
   }
 
   ngOnChanges(): void {
-    console.log(this.chartDataset);
     this.mapData();
 
   }

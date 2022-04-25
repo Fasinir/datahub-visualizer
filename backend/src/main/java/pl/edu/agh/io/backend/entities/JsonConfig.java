@@ -1,21 +1,20 @@
 package pl.edu.agh.io.backend.entities;
 
-import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
-@NoArgsConstructor
+@AllArgsConstructor
+@Getter
 public class JsonConfig {
+
+    @NotBlank
     private String endpointURL;
+
+    @NotEmpty
     private List<Object> dataCategory;
-
-    public List<Object> getDataCategory() {
-        return dataCategory;
-    }
-
-    public String getEndpointURL() {
-        return endpointURL;
-    }
-
 
 }
