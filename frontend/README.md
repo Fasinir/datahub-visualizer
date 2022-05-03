@@ -25,3 +25,13 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+## Jak odpalić Dockera
+
+```bash
+docker build --tag dh-vis-front .
+docker run -d -p 4200:80 dh-vis-front
+```
+
+Sprawdzamy działanie aplikacji wchodząc na stronę http://localhost:4200/
