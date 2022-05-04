@@ -1,0 +1,42 @@
+{
+	"variables": [],
+	"info": {
+		"name": "IO",
+		"_postman_id": "91dc8497-f649-2e68-6598-b034052fce2f",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "post",
+			"request": {
+				"url": "http://localhost:8080/config",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"tiles\":[\r\n      {\r\n         \"tileType\":\"LINE_BAR_CHART\",\r\n         \"tileLabel\":\"Wykres zanieczyszczeń powietrza\",\r\n         \"endpoints\":[\r\n            {\r\n               \"url\":\"https://datahub.ki.agh.edu.pl/api/endpoints/74/data/\",\r\n               \"chartData\":[\r\n                  {\r\n                     \"jsonPath\":\"particleConcentrationSensor/concentration/pm1\",\r\n                     \"label\":\"PM1\",\r\n                     \"chartType\":\"LINE\"\r\n                  },\r\n                  {\r\n                     \"jsonPath\":\"particleConcentrationSensor/concentration/pm2_5\",\r\n                     \"label\":\"PM2_5\",\r\n                     \"chartType\":\"BAR\"\r\n                  },\r\n                  {\r\n                     \"jsonPath\":\"particleConcentrationSensor/concentration/pm10\",\r\n                     \"label\":\"PM10\",\r\n                     \"chartType\":\"BAR\"\r\n                  }\r\n               ]\r\n            }\r\n         ]\r\n      },\r\n      {\r\n         \"tileType\":\"SINGLE_VALUE_CHART\",\r\n         \"tileLabel\":\"Jakis tam ostatni pomiar z jakiejs tam losowej stacji\",\r\n         \"url\":\"https://datahub.ki.agh.edu.pl/api/endpoints/70/data/\",\r\n         \"jsonPath\":\"heater/tempSet\"\r\n      }\r\n   ]\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get",
+			"request": {
+				"url": "http://localhost:8080/visualize",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
