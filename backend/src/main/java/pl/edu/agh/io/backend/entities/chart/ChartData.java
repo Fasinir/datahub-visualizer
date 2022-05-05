@@ -1,6 +1,4 @@
-package pl.edu.agh.io.backend.entities.response;
-
-import pl.edu.agh.io.backend.entities.common.ChartType;
+package pl.edu.agh.io.backend.entities.chart;
 
 import java.util.List;
 

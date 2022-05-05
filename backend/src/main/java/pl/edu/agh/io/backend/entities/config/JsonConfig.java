@@ -1,4 +1,4 @@
-package pl.edu.agh.io.backend.entities.request;
+package pl.edu.agh.io.backend.entities.config;
 
 import lombok.NoArgsConstructor;
 
