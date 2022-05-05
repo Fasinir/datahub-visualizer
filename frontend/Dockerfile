@@ -9,7 +9,7 @@ RUN npm install --force
 
 COPY . ./
 
-CMD [ "npm" "run" "build" "--prod"]
+RUN [ "npm", "run", "build", "--prod"]
 
 FROM nginx:1.21-alpine
 COPY nginx.config /etc/nginx/conf.d/default.conf
