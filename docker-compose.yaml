@@ -4,16 +4,14 @@ services:
     ports:
       - "4200:80"
     networks:
-      - front-tier
-      - back-tier
+      - common-network
   
   backend:
     build: backend
     ports:
       - "8080:8080"
     networks:
-      - back-tier
+      - common-network
 
 networks:
-  front-tier: {}
-  back-tier: {}
+  common-network: {}
