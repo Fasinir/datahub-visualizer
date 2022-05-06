@@ -9,17 +9,17 @@ import pl.edu.agh.io.backend.entities.config.JsonConfig;
 public class VisualizerController {
     private final VisualizerService visualizerService;
 
-    private VisualizerController(VisualizerService visualizerService) {
+    public VisualizerController(VisualizerService visualizerService) {
         this.visualizerService = visualizerService;
     }
 
     @GetMapping("/visualize")
-    private ResponseData chartData() {
+    public ResponseData chartData() {
         return visualizerService.getResponseDataData();
     }
 
     @PostMapping(value = "/config")
-    private JsonConfig loadConfig(@RequestBody JsonConfig jsonConfig) {
+    public JsonConfig loadConfig(@RequestBody JsonConfig jsonConfig) {
         visualizerService.loadData(jsonConfig);
         return jsonConfig;
     }

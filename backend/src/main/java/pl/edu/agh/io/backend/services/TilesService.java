@@ -31,7 +31,7 @@ public class TilesService {
     private Double getValueFromData(LinkedHashMap<String, Object> dataSample, FullPath fullPath) {
         LinkedHashMap<String, Object> temp = (LinkedHashMap<String, Object>) dataSample.get("data");
         for(var j: fullPath.pathList()) {
-            temp = (LinkedHashMap<String, Object>) temp.get((String) j);
+            temp = (LinkedHashMap<String, Object>) temp.get(j);
         }
         return (Double) temp.get(fullPath.lastPathElem());
     }
@@ -82,11 +82,13 @@ public class TilesService {
         DataJson dataJson = getDataAPI(tileConfig);
         FullPath fullPath = getFullPath(tileConfig);
 
-        LinkedHashMap<String, Object> lastMeasure = (LinkedHashMap<String, Object>) dataJson.results().get(0);
-        Double foundValue = getValueFromData(lastMeasure, fullPath);
+        Double foundValue = null;
+        if(dataJson != null && !dataJson.results().isEmpty()) {
+            LinkedHashMap<String, Object> lastMeasure = dataJson.results().get(0);
+            foundValue = getValueFromData(lastMeasure, fullPath);
+        }
 
-        SingleValueTile newTile = new SingleValueTile(TileType.SINGLE_VALUE_CHART, (String) tileConfig.get("tileLabel"), foundValue);
-        return newTile;
+        return new SingleValueTile(TileType.SINGLE_VALUE_CHART, (String) tileConfig.get("tileLabel"), foundValue);
     }
 
     ResponseData createTiles(JsonConfig jsonConfig) {
