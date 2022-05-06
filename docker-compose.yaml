@@ -4,7 +4,6 @@ services:
     ports:
       - "4200:80"
     networks:
-      - front-tier
       - back-tier
   
   backend:
@@ -15,5 +14,4 @@ services:
       - back-tier
 
 networks:
-  front-tier: {}
   back-tier: {}
