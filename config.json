@@ -1,0 +1,4 @@
+{
+    "endpointURL": "https://datahub.ki.agh.edu.pl/api/endpoints/74/data/",
+    "dataCategory": ["particleConcentrationSensor", "concentration", ["pm1", "pm2_5", "pm10"]]
+}

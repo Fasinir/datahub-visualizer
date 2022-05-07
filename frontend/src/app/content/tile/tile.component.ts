@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class TileComponent implements OnInit {
 
   @Input() chartType: string = "placeholder";
+  @Input() chartTitle: string = "Wykres";
 
   ngOnInit(): void {
   }

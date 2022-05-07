@@ -1,16 +1,16 @@
 import {Component, Input, OnChanges} from '@angular/core';
-import {ChartOptions} from 'chart.js';
-
+import {ChartOptions, ChartTypeRegistry} from 'chart.js';
+import { ChartType } from 'chart.js';
 @Component({
   selector: 'app-chart', templateUrl: './chart.component.html', styleUrls: ['./chart.component.css']
 })
 export class ChartComponent implements OnChanges {
 
 
-  chartType = 'line';
-  @Input() chartDataset: number[][] = [];
+  chartType: ChartType = "line";
+  @Input() chartDataset: { data: number[], label: string }[] = [];
   @Input() labels: string[] = [];
-  chartDatasets: { data: number[], label: string }[] = [];
+  //chartDatasets: { data: number[], label: string }[] = [];
   chartOptions: ChartOptions = {
     responsive: true, color: 'black', scales: {
       x: {
@@ -33,7 +33,7 @@ export class ChartComponent implements OnChanges {
 
   ngOnChanges(): void {
     this.mapData();
-
+    console.log(this.chartDataset)
   }
 
   chartClicked(event: any) {
@@ -45,10 +45,10 @@ export class ChartComponent implements OnChanges {
   }
 
   mapData() {
-    if (this.chartDataset) {
-      for (let [key, value] of Object.entries(this.chartDataset)) {
-        this.chartDatasets.push({data: value, label: key});
-      }
-    }
+    // if (this.chartDataset) {
+    //   for (let [key, value] of Object.entries(this.chartDataset)) {
+    //     this.chartDatasets.push({data: value, label: key});
+    //   }
+    // }
   }
 }
