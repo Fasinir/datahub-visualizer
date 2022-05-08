@@ -54,7 +54,7 @@ body {
   }
 }
 
-@media (min-width: 768px) {
+@media (min-height: 650px) and (min-width: 768px) {
   /* Hide mobile */
   #container_mobile {
     display: none;

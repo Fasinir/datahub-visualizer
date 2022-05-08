@@ -12,17 +12,6 @@
   color: var(--main-color-dark);
 }
 
-#main-chart {
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#main-chart img {
-  width: 80%;
-}
-
 #container_desktop {
   max-width: 1440px;
   margin-left: auto;
@@ -40,4 +29,10 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 60px
+}
+
+#main-chart {
+  height: calc(100vh - 194px);
+  justify-content: center;
+  align-items: center;
 }
