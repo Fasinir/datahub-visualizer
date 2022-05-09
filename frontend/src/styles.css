@@ -33,6 +33,10 @@ body {
   max-width: calc(80vw);
 }
 
+.modal-content {
+  height: calc(80vh);
+  display: block;
+}
 
 /* breakpoints */
 @media (min-width: 0) {
