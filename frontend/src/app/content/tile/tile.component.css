@@ -1,19 +1,5 @@
-.tile-header {
-  text-align: center;
-}
-
-.tile-header span {
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 24px;
-  line-height: 29px;
-  text-align: center;
-  color: var(--main-color-dark);
-}
-
-
 .tile-container {
+  position: relative;
   width: calc(1440px / 6);
   height: calc(1440px / 6);
   background-color: var(--main-color-light);
@@ -27,13 +13,28 @@
   cursor: pointer;
 }
 
+.tile-header {
+  text-align: center;
+  height: 40px;
+}
+
+.tile-header span {
+  vertical-align: top;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  color: var(--main-color-dark);
+  display: block;
+}
+
 .tile-image {
-  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .tile-image img {
-  width: 80%;
+  width: 160px;
+  height: 160px;
 }
