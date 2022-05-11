@@ -1,5 +1,6 @@
 #main-chart-title {
   text-align: center;
+  padding-bottom: 20px;
 }
 
 #main-chart-title span {
@@ -35,4 +36,6 @@
   height: calc(100vh - 194px);
   justify-content: center;
   align-items: center;
+  background-color: white;
+  border-radius:12px;
 }
