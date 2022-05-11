@@ -18,6 +18,6 @@ export class DataService {
   }
 
   public getChartsData(): Observable<any> {
-    return this.http.get<any>(this.url + "/chart");
+    return this.http.get<any>(this.url + "/visualize");
   }
 }

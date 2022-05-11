@@ -14,26 +14,37 @@ export class ContentComponent implements OnInit {
   constructor(private chartService: ChartService, private modalService: NgbModal) {
   }
 
-  chartLabels: string[] = [];
-  chartDatasets: any;
+  chartData: any ={};
 
   notifierSubscription: Subscription = this.chartService.loadedData
     .subscribe(data => {
-      this.chartLabels = data.labels;
-      this.chartDatasets = data.datasets;
+      this.chartData = data;
     });
 
   ngOnInit(): void {
 
   }
 
-  openModal() {
+  openModal(data: any) {
+    let chartLabels: string[] = data.chartData[0].xVals;
+    let chartDatasets: {label: string, data: number[], type: string}[] = [];
+
     const modalRef = this.modalService.open(ModalComponent,
       {
         windowClass: 'chart_modal',
       });
+    for (let set of data.chartData) {
+      chartDatasets.push({label: set.label, data: set.yVals, type:set.type.toLowerCase( )})
+    }
+    console.log(chartDatasets)
+    modalRef.componentInstance.chartDatasets = chartDatasets;
+    modalRef.componentInstance.chartLabels = chartLabels;
+  }
 
-    modalRef.componentInstance.chartDatasets = this.chartDatasets;
-    modalRef.componentInstance.chartLabels = this.chartLabels;
+  chartType(type: string) {
+    if (type === "LINE_BAR_CHART") {
+      return "arrow";
+    }
+    return "scatter"
   }
 }
