@@ -30,7 +30,6 @@ export class LoadFileButtonComponent implements OnInit {
           .subscribe(
             data => {
               this.chartService.notifyAboutLoadedData(data);
-              console.log("DATA LOADED")
             }),
         (error) => {
           alert(error.message);
