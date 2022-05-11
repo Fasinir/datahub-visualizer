@@ -1,5 +1,5 @@
 .tile-container {
-  position: relative;
+  display: block;
   width: calc(1440px / 6);
   height: calc(1440px / 6);
   background-color: var(--main-color-light);
@@ -15,17 +15,24 @@
 
 .tile-header {
   text-align: center;
-  height: 40px;
+  height: 60px;
 }
 
 .tile-header span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  /* autoprefixer: ignore next */
+  -webkit-box-orient: vertical;
+  white-space: normal;
+
   vertical-align: top;
   font-family: "Inter";
   font-style: normal;
-  font-weight: 500;
-  font-size: 12px;
+  font-weight: 600;
+  font-size: 16px;
   color: var(--main-color-dark);
-  display: block;
 }
 
 .tile-image {
@@ -35,6 +42,6 @@
 }
 
 .tile-image img {
-  width: 160px;
-  height: 160px;
+  width: 140px;
+  height: 140px;
 }
