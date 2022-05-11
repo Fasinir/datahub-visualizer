@@ -9,8 +9,5 @@
   </div>
   <div id="container_desktop">
     <app-tile *ngFor="let chart of chartData.tiles" [chartType]=chartType(chart.type) [chartTitle]=chart.label (click)="openModal(chart)"></app-tile>
-    <!-- <app-tile [chartType]='"arrow"' (click)="openModal()"></app-tile>
-    <app-tile [chartType]='"pie"'></app-tile>
-    <app-tile [chartType]='"scatter"'></app-tile> -->
   </div>
 </div>
