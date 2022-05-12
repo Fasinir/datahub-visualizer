@@ -11,7 +11,7 @@ export class ChartComponent implements OnChanges {
   @Input() chartDataset: { data: number[], label: string }[] = [];
   @Input() labels: string[] = [];
   chartOptions: ChartOptions = {
-    responsive: true, color: 'black', scales: {
+    responsive: true, maintainAspectRatio: false, color: 'black', scales: {
       x: {
         reverse: true,
         ticks: {
