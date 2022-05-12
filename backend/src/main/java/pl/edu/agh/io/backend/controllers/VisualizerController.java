@@ -6,7 +6,7 @@ import pl.edu.agh.io.backend.services.VisualizerService;
 import pl.edu.agh.io.backend.entities.config.JsonConfig;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "http://localhost:4200")
 public class VisualizerController {
     private final VisualizerService visualizerService;
 
