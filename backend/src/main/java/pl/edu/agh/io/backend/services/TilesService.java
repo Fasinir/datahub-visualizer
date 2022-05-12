@@ -6,16 +6,14 @@ import pl.edu.agh.io.backend.entities.chart.ChartData;
 import pl.edu.agh.io.backend.entities.chart.ChartType;
 import pl.edu.agh.io.backend.entities.config.JsonConfig;
 import pl.edu.agh.io.backend.entities.data.DataJson;
+import pl.edu.agh.io.backend.entities.data.TileData;
 import pl.edu.agh.io.backend.entities.path.FullPath;
 import pl.edu.agh.io.backend.entities.response.ResponseData;
 import pl.edu.agh.io.backend.entities.tile.LineBarTile;
 import pl.edu.agh.io.backend.entities.tile.SingleValueTile;
 import pl.edu.agh.io.backend.entities.tile.TileType;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class TilesService {
@@ -42,37 +40,68 @@ public class TilesService {
         return restTemplate.getForObject(url, DataJson.class);
     }
 
-    private void addLineChartData(LineBarTile newTile, DataJson dataJson, LinkedHashMap<String, Object> dataConfig) {
-        FullPath fullPath = getFullPath(dataConfig);
+    private TileData getTileData(LinkedHashMap<String, Object> tileConfig) {
+        TileData newTileData = new TileData(new ArrayList<DataJson>());
+        List<LinkedHashMap<String, Object>> endpointsList = (List<LinkedHashMap<String, Object>>) tileConfig.get("endpoints");
 
-        List<String> timestamps = new ArrayList<>();
-        List<Double> collectedData = new ArrayList<>();
-
-        for(var i: dataJson.results()) {
-            LinkedHashMap<String, Object> sample = (LinkedHashMap<String, Object>) i;
-
-            String fullDate = (String) sample.get("timestamp");
-            timestamps.add(fullDate.substring(11, 19));
-
-            Double foundValue = getValueFromData(sample, fullPath);
-            collectedData.add(foundValue);
+        for (LinkedHashMap<String, Object> endpoint : endpointsList) {
+            DataJson dataJson = getDataAPI(endpoint);
+            newTileData.addDataJson(dataJson);
         }
 
-        ChartData newChart = new ChartData((String) dataConfig.get("label"), ChartType.valueOf((String) dataConfig.get("chartType")), timestamps, collectedData);
+        return newTileData;
+    }
+
+    List<String> getTimestamps(TileData tileData) {
+        Set<String> timestamps = new HashSet<>();
+        for (DataJson dataJson : tileData.tileData()) {
+            for (LinkedHashMap<String, Object> sample : dataJson.results()) {
+                String fullDate = (String) sample.get("timestamp");
+                timestamps.add(fullDate);
+            }
+        }
+
+        List<String> timestampsList = new ArrayList<>(timestamps);
+        Collections.sort(timestampsList);
+        return timestampsList;
+    }
+
+    private void addLineBarChartData(LineBarTile newTile, DataJson dataJson, List<String> xVals, LinkedHashMap<String, Object> dataConfig) {
+        FullPath fullPath = getFullPath(dataConfig);
+
+        Map<String, Double> collectedData = new LinkedHashMap<>();
+        for(LinkedHashMap<String, Object> sample: dataJson.results()) {
+            String fullDate = (String) sample.get("timestamp");
+//            timestamps.add(fullDate.substring(11, 19));
+            Double foundValue = getValueFromData(sample, fullPath);
+            collectedData.put(fullDate, foundValue);
+        }
+
+        List<Double> yVals = new ArrayList<>();
+        for(String xVal: xVals) {
+            yVals.add(collectedData.getOrDefault(xVal, null));
+        }
+
+        ChartData newChart = new ChartData((String) dataConfig.get("label"), ChartType.valueOf((String) dataConfig.get("chartType")), yVals);
         newTile.addChartData(newChart);
     }
 
     private LineBarTile createLineBarTile(LinkedHashMap<String, Object> tileConfig) {
         List<LinkedHashMap<String, Object>> endpointsList = (List<LinkedHashMap<String, Object>>) tileConfig.get("endpoints");
-        LineBarTile newTile = new LineBarTile(TileType.LINE_BAR_CHART, (String) tileConfig.get("tileLabel"), new ArrayList<>());
+        TileData tileData = getTileData(tileConfig);
+        List<String> xVals = getTimestamps(tileData);
 
+        LineBarTile newTile = new LineBarTile(TileType.LINE_BAR_CHART, (String) tileConfig.get("tileLabel"), xVals, new ArrayList<>());
+
+        int dataIndex = 0;
         for (LinkedHashMap<String, Object> endpoint : endpointsList) {
-            DataJson dataJson = getDataAPI(endpoint);
+            DataJson dataJson = tileData.tileData().get(dataIndex);
             List<LinkedHashMap<String, Object>> dataConfigList = (List<LinkedHashMap<String, Object>>) endpoint.get("chartData");
 
             for (LinkedHashMap<String, Object> dataConfig : dataConfigList) {
-                addLineChartData(newTile, dataJson, dataConfig);
+                addLineBarChartData(newTile, dataJson, xVals, dataConfig);
             }
+            dataIndex++;
         }
 
         return newTile;

@@ -6,7 +6,7 @@ import pl.edu.agh.io.backend.services.VisualizerService;
 import pl.edu.agh.io.backend.entities.config.JsonConfig;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "http://localhost:4200")
 public class VisualizerController {
     private final VisualizerService visualizerService;
 
@@ -14,14 +14,9 @@ public class VisualizerController {
         this.visualizerService = visualizerService;
     }
 
-    @GetMapping("/visualize")
-    public ResponseData chartData() {
-        return visualizerService.getResponseDataData();
-    }
-
-    @PostMapping(value = "/config")
-    public JsonConfig loadConfig(@RequestBody JsonConfig jsonConfig) {
+    @PostMapping(value = "/visualize")
+    public ResponseData loadConfig(@RequestBody JsonConfig jsonConfig) {
         visualizerService.loadData(jsonConfig);
-        return jsonConfig;
+        return visualizerService.getResponseDataData();
     }
 }
