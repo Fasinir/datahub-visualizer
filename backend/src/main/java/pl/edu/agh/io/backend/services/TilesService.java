@@ -91,7 +91,7 @@ public class TilesService {
         TileData tileData = getTileData(tileConfig);
         List<String> xVals = getTimestamps(tileData);
 
-        LineBarTile newTile = new LineBarTile(TileType.LINE_BAR_CHART, (String) tileConfig.get("tileLabel"), xVals, new ArrayList<>());
+        LineBarTile newTile = new LineBarTile(TileType.LINE_BAR_CHART, (String) tileConfig.get("tileLabel"), (Integer) tileConfig.get("refreshingRate"), xVals, new ArrayList<>());
 
         int dataIndex = 0;
         for (LinkedHashMap<String, Object> endpoint : endpointsList) {
@@ -117,7 +117,7 @@ public class TilesService {
             foundValue = getValueFromData(lastMeasure, fullPath);
         }
 
-        return new SingleValueTile(TileType.SINGLE_VALUE_CHART, (String) tileConfig.get("tileLabel"), foundValue);
+        return new SingleValueTile(TileType.SINGLE_VALUE_CHART, (String) tileConfig.get("tileLabel"), (Integer) tileConfig.get("refreshingRate"), foundValue);
     }
 
     ResponseData createTiles(JsonConfig jsonConfig) {
