@@ -1,5 +1,6 @@
 #main-chart-title {
   text-align: center;
+  padding-bottom: 20px;
 }
 
 #main-chart-title span {
@@ -10,17 +11,6 @@
   line-height: 29px;
   text-align: center;
   color: var(--main-color-dark);
-}
-
-#main-chart {
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#main-chart img {
-  width: 80%;
 }
 
 #container_desktop {
@@ -40,4 +30,12 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 60px
+}
+
+#main-chart {
+  height: calc(100vh - 194px);
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border-radius:12px;
 }
