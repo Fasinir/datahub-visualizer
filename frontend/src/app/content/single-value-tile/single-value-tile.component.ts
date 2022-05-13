@@ -10,7 +10,7 @@ export class SingleValueTileComponent implements OnInit {
   constructor() { }
 
   @Input() chartTitle: string = "Wykres";
-  @Input() chartValue: number = 0;
+  @Input() chartValue: any = 0;
   ngOnInit(): void {
   }
 
