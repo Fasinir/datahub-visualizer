@@ -26,7 +26,7 @@ export class ContentComponent implements OnInit {
   }
 
   openModal(data: any) {
-    let chartLabels: string[] = data.chartData[0].xVals;
+    let chartLabels: string[] = data.xVals;
     let chartDatasets: {label: string, data: number[], type: string}[] = [];
 
     const modalRef = this.modalService.open(ModalComponent,
@@ -36,7 +36,6 @@ export class ContentComponent implements OnInit {
     for (let set of data.chartData) {
       chartDatasets.push({label: set.label, data: set.yVals, type:set.type.toLowerCase( )})
     }
-    console.log(chartDatasets)
     modalRef.componentInstance.chartDatasets = chartDatasets;
     modalRef.componentInstance.chartLabels = chartLabels;
   }
