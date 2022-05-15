@@ -85,7 +85,8 @@ public class TilesService {
             yVals.add(collectedData.getOrDefault(xVal, null));
         }
 
-        ChartData newChart = new ChartData((String) dataConfig.get("label"), ChartType.valueOf((String) dataConfig.get("chartType")), yVals);
+        ChartData newChart = new ChartData((String) dataConfig.get("label"), ChartType.valueOf((String) dataConfig.get("chartType")), yVals,
+                (Double)dataConfig.get("outlierLow"), (Double)dataConfig.get("outlierHigh"));
         newTile.addChartData(newChart);
     }
 
