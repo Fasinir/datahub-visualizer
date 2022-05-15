@@ -16,8 +16,4 @@ export class DataService {
   public postConfigFile(file: any): Observable<any> {
     return this.http.post<any>(this.url + "/visualize", file);
   }
-
-  public getChartsData(): Observable<any> {
-    return this.http.get<any>(this.url + "/visualize");
-  }
 }
