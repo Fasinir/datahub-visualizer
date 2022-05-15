@@ -1,11 +1,10 @@
 <div class="chart-wrapper">
     <canvas baseChart
-        [datasets]="chartDataset"
+        [datasets]="chartDatasets"
         [labels]="labels"
         [options]="chartOptions"
         [legend]="true"
         [type] = "chartType"
-        (chartHover)="chartHovered($event)"
-       (chartClick)="chartClicked($event)">
+    >
     </canvas>
 </div>

@@ -3,6 +3,7 @@ import {Subscription} from 'rxjs';
 import {ChartService} from '../services/chart.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {ModalComponent} from "./modal/modal.component";
+import {ChartDataset} from "chart.js";
 
 @Component({
   selector: 'app-content',
@@ -27,7 +28,7 @@ export class ContentComponent implements OnInit {
 
   openModal(data: any) {
     let chartLabels: string[] = data.xVals;
-    let chartDatasets: {label: string, data: number[], type: string}[] = [];
+    let chartDatasets: ChartDataset[] = [];
 
     const modalRef = this.modalService.open(ModalComponent,
       {
