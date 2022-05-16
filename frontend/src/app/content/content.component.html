@@ -9,6 +9,13 @@
     </div>
   </div>
   <div id="container_desktop">
-    <app-tile *ngFor="let chart of chartData.tiles" [chartType]=chartType(chart.type) [chartTitle]=chart.label (click)="openModal(chart)"></app-tile>
+    <div *ngFor="let chart of chartData.tiles">
+      <div *ngIf="chart.type === 'SINGLE_VALUE_CHART'">
+        <app-single-value-tile [chartTitle]=chart.label [chartValue]=chart.value></app-single-value-tile>
+      </div>
+      <div *ngIf="!(chart.type === 'SINGLE_VALUE_CHART')">
+        <app-tile [chartType]=chartType(chart.type) [chartTitle]=chart.label (click)="openModal(chart)"></app-tile>
+      </div>
+    </div>
   </div>
 </div>

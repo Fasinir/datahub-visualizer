@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BannerComponent } from './banner/banner.component';
@@ -15,6 +15,7 @@ import { LoadFileButtonComponent } from './banner/load-file-button/load-file-but
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalComponent } from './content/modal/modal.component';
 import { FileErrorPageComponent } from './file-error-page/file-error-page.component';
+import { SingleValueTileComponent } from './content/single-value-tile/single-value-tile.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { FileErrorPageComponent } from './file-error-page/file-error-page.compon
     ChartComponent,
     LoadFileButtonComponent,
     ModalComponent,
-    FileErrorPageComponent
+    FileErrorPageComponent,
+    SingleValueTileComponent
   ],
   imports: [
     NgbModule,
