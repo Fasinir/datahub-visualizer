@@ -1,6 +1,5 @@
 <div class="app">
   <app-banner (menuEmitter)="onMenuChange($event)"></app-banner>
-  <router-outlet></router-outlet>
   <app-content [hidden]="menuVisible"></app-content>
   <app-menu *ngIf="menuVisible"></app-menu>
   <app-footer></app-footer>

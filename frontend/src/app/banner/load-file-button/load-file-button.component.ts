@@ -28,7 +28,10 @@ export class LoadFileButtonComponent implements OnInit {
       postParameter = JSON.parse(<string>fileReader.result);
       this.dataService.postConfigFile(postParameter).subscribe(
         (data) => this.chartService.notifyAboutLoadedData(data),
-        (error) => { console.log(error); alert(error.message); this.router.navigate(['fileError']) },
+        (error) => {
+          console.log(error); alert(error.message); this.router.navigate(
+            ['fileError'])
+        },
       ).add(() => {
         this.fileInput.nativeElement.value = "";
       });

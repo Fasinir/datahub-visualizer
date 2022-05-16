@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { FileErrorPageComponent } from './file-error-page/file-error-page.component';
 
-const routes: Routes = [{ path: '', component: AppComponent },
+const routes: Routes = [
 { path: 'fileError', component: FileErrorPageComponent }];
 
 @NgModule({

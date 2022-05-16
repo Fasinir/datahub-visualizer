@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Inject } from '@angular/core';
 
 @Component({
   selector: 'app-file-error-page',
@@ -7,7 +7,8 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class FileErrorPageComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
