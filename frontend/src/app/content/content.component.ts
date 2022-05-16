@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { ChartService } from '../services/chart.service';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ModalComponent } from "./modal/modal.component";
-=======
 import {Component} from '@angular/core';
 import {Subscription} from 'rxjs';
 import {ChartService} from '../services/chart.service';
@@ -12,7 +5,6 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {ModalComponent} from "./modal/modal.component";
 import {ChartDataset} from "chart.js";
 import {Outlier} from "./chart/outliers.model";
->>>>>>> a8b145bd01ced5e440af8a8ec67abee8bc751a4d
 
 @Component({
   selector: 'app-content',
