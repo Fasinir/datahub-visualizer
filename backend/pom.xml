@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>pl.edu.agh.io</groupId>
 	<artifactId>backend</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.5</version>
 	<name>backend</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
@@ -45,6 +45,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
+					<mainClass>pl.edu.agh.io.backend.BackendApplication</mainClass>
 					<excludes>
 						<exclude>
 							<groupId>org.projectlombok</groupId>
