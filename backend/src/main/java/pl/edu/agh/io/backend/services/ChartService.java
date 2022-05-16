@@ -28,8 +28,15 @@ public class ChartService {
             yVals.add(collectedData.getOrDefault(xVal, null));
         }
 
-        ChartData newChart = new ChartData((String) dataConfig.get("label"), ChartType.valueOf((String) dataConfig.get("chartType")), yVals);
+        ChartData newChart = new ChartData((String) dataConfig.get("label"), ChartType.valueOf((String) dataConfig.get("chartType")),
+                yVals, castOutlier(dataConfig.get("outlierLow")), castOutlier(dataConfig.get("outlierHigh")));
         newTile.addChartData(newChart);
+    }
+
+    private Double castOutlier(Object outlier){
+        if (outlier instanceof Integer integer)
+            return integer.doubleValue();
+        return (Double) outlier;
     }
 
     TileData getTileData(LinkedHashMap<String, Object> tileConfig) {

@@ -1,19 +1,15 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import {Component, Input} from '@angular/core';
+import {ChartDataset} from "chart.js";
+import {Outlier} from "../chart/outliers.model";
 
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.css']
 })
-export class ModalComponent implements OnInit {
+export class ModalComponent {
   @Input() chartLabels: string[] = [];
-  @Input() chartDatasets: any;
+  @Input() chartDatasets: ChartDataset[] = [];
+  @Input() outliers: Outlier[] = [];
 
-  constructor(public activeModal: NgbActiveModal) {
-  }
-
-  ngOnInit(): void {
-  
-  }
 }
