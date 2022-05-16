@@ -14,6 +14,7 @@ import { NgChartsModule } from 'ng2-charts';
 import { LoadFileButtonComponent } from './banner/load-file-button/load-file-button.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalComponent } from './content/modal/modal.component';
+import { SingleValueTileComponent } from './content/single-value-tile/single-value-tile.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ModalComponent } from './content/modal/modal.component';
     MenuChartChoiceComponent,
     ChartComponent,
     LoadFileButtonComponent,
-    ModalComponent
+    ModalComponent,
+    SingleValueTileComponent
   ],
   imports: [
     NgbModule,
