@@ -34,7 +34,7 @@ export class ContentComponent {
         windowClass: 'chart_modal',
       });
     for (let set of data.chartData) {
-      chartDatasets.push({label: set.label, data: set.yVals, type: set.type.toLowerCase()})
+      chartDatasets.push({label: set.label, data: set.yVals, type: set.type.toLowerCase(), spanGaps: true})
       outliers.push({outlierLow: set.outlierLow, outlierHigh: set.outlierHigh})
     }
     modalRef.componentInstance.chartDatasets = chartDatasets;
