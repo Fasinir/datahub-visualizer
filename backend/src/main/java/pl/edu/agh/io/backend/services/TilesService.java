@@ -86,8 +86,16 @@ public class TilesService {
         }
 
         ChartData newChart = new ChartData((String) dataConfig.get("label"), ChartType.valueOf((String) dataConfig.get("chartType")),
-                yVals, (Double) dataConfig.get("outlierLow"), (Double) dataConfig.get("outlierHigh"));
+                yVals,
+                castOutlier(dataConfig.get("outlierLow")),
+                castOutlier(dataConfig.get("outlierHigh")));
         newTile.addChartData(newChart);
+    }
+
+    private Double castOutlier(Object outlier){
+        if (outlier instanceof Integer integer)
+            return integer.doubleValue();
+        return (Double) outlier;
     }
 
     private TileData getTileData(LinkedHashMap<String, Object> tileConfig) {
