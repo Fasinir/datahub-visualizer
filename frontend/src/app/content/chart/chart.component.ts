@@ -1,5 +1,6 @@
 import {Component, Input, OnChanges} from '@angular/core';
 import {ChartOptions, ChartType, ChartDataset} from 'chart.js';
+import {Outlier} from "./outliers.model";
 
 @Component({
   selector: 'app-chart', templateUrl: './chart.component.html', styleUrls: ['./chart.component.css']
@@ -9,6 +10,7 @@ export class ChartComponent implements OnChanges {
 
   chartType: ChartType = "line";
   @Input() chartDatasets: ChartDataset[] = [];
+  @Input() outliers: Outlier[] = [];
   @Input() labels: string[] = [];
   chartOptions: ChartOptions = {
     responsive: true, maintainAspectRatio: false, color: 'black', scales: {
@@ -26,22 +28,28 @@ export class ChartComponent implements OnChanges {
 
   };
 
-  constructor() {
+  ngOnChanges(): void {
+    for (let _i = 0; _i < this.chartDatasets.length; _i++) {
+      let dataset = this.chartDatasets[_i];
+      let outlier = this.outliers[_i];
+      this.datasetManipulation(dataset, outlier)
+    }
   }
 
-  ngOnChanges(): void {
-    for (let item of this.chartDatasets) {
-      if (item.type == "bar"){
-        const color = this.getRandomColor();
-        item.backgroundColor = item.data.map((v) => (v == null || (v >= 7 && v <= 23 ) ? color : "red"));
-        item.hoverBackgroundColor = item.backgroundColor;
-      }
-    else if (item.type == "line"){
-        const color = this.getRandomColor();
-        item.pointBackgroundColor = item.data.map((v) => (v == null || (v >= 7 && v <= 23 ) ? color : "red"));
-      }
+  datasetManipulation(dataset: ChartDataset, outlier: Outlier) {
+    if (dataset.type == "bar") {
+      dataset.backgroundColor = this.getColors(dataset, outlier)
+      dataset.hoverBackgroundColor = dataset.backgroundColor;
+    } else if (dataset.type == "line") {
+      dataset.pointBackgroundColor = this.getColors(dataset, outlier)
+      dataset.pointRadius = 4
     }
-    console.log(this.chartDatasets)
+  }
+
+  getColors(dataset: ChartDataset, outlier: Outlier) {
+    const color = this.getRandomColor();
+    return dataset.data.map((v) => (v == null || ((outlier.outlierLow == null || v >= outlier.outlierLow)
+      && (outlier.outlierHigh == null || v <= outlier.outlierHigh)) ? color : "red"));
   }
 
   getRandomColor() {
