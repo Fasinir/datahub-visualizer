@@ -38,6 +38,7 @@
 .tile-value-container {
     text-align: center;
     height: 60px;
+    word-wrap: break-word;
 }
 
 .tile-value-container span {
