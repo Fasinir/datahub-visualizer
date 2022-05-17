@@ -17,6 +17,15 @@ export class LoadFileButtonComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    let config = this.dataService.getStoredConfig();
+    if(config) {
+      this.dataService.postConfigFile(config).subscribe(
+        (data) => this.chartService.notifyAboutLoadedData(data),
+        (error) => alert(error.message),
+      ).add(() => {
+        this.fileInput.nativeElement.value = "";
+      });
+    } 
   }
 
   onFileSelected(event: any) {
