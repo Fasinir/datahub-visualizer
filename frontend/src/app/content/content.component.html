@@ -2,15 +2,17 @@
   <router-outlet></router-outlet>
   <div id="container_mobile">
     <div id="main-chart-title">
-      <span>{{mobileName}}</span>
+      <span>{{mobileData.name}}</span>
     </div>
-    <ng-container *ngIf="mobileName">
-      <ng-container *ngIf="mobileIsSingleValue">
-        <span>{{mobileSingleValue}}</span>
+    <ng-container *ngIf="mobileData.name">
+      <ng-container *ngIf="mobileData.isSingleValue">
+        <span>{{mobileData.singleValue}}</span>
       </ng-container>
-      <ng-container *ngIf="!mobileIsSingleValue">
+      <ng-container *ngIf="!mobileData.isSingleValue">
         <div id="main-chart">
-          <app-chart [chartDatasets]="mobileDatasets" [labels]="mobileLabels" [outliers]="mobileOutliers"></app-chart>
+          <app-chart [chartDatasets]="mobileData.datasets" [labels]="mobileData.labels"
+                     [outliers]="mobileData.outliers">
+          </app-chart>
         </div>
       </ng-container>
     </ng-container>

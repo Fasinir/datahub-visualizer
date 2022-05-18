@@ -6,6 +6,7 @@ import {ModalComponent} from "./modal/modal.component";
 import {ChartDataset} from "chart.js";
 import {Outlier} from "./chart/outliers.model";
 import {MenuService} from "../services/menu.service";
+import {MobileData} from "./mobile-data";
 
 @Component({
   selector: 'app-content',
@@ -16,13 +17,9 @@ import {MenuService} from "../services/menu.service";
 export class ContentComponent {
 
   chartData: any = {};
-  mobileName: string = "";
-  mobileLabels: string[] = [];
-  mobileDatasets: ChartDataset[] = [];
-  mobileOutliers: Outlier[] = []
+  mobileData: MobileData = new MobileData();
 
-  mobileIsSingleValue: boolean = false;
-  mobileSingleValue: number = 0;
+
   notifierSubscription: Subscription = this.chartService.loadedData
     .subscribe(data => {
       this.chartData = data;
@@ -30,10 +27,10 @@ export class ContentComponent {
 
   menuSubscription: Subscription = this.menuService.clickedChartData
     .subscribe(data => {
-      this.mobileIsSingleValue = data.type === 'SINGLE_VALUE_CHART';
-      if (this.mobileIsSingleValue){
-        this.mobileSingleValue = data.value
-        this.mobileName = data.label;
+      this.mobileData.isSingleValue = data.type === 'SINGLE_VALUE_CHART';
+      if (this.mobileData.isSingleValue){
+        this.mobileData.singleValue = data.value
+        this.mobileData.name = data.label;
       }
       else this.displayChart(data, false);
     });
@@ -50,10 +47,11 @@ export class ContentComponent {
       chartDatasets.push({label: set.label, data: set.yVals, type: set.type.toLowerCase(), spanGaps: true})
       outliers.push({outlierLow: set.outlierLow, outlierHigh: set.outlierHigh})
     }
-    this.mobileName = data.label;
-    this.mobileLabels = data.xVals;
-    this.mobileOutliers = outliers;
-    this.mobileDatasets = chartDatasets;
+    this.mobileData.name = data.label;
+    this.mobileData.labels = data.xVals;
+    this.mobileData.outliers = outliers;
+    this.mobileData.datasets = chartDatasets;
+    this.mobileData.isSingleValue = false;
 
     if (forDesktop) {
       const modalRef = this.modalService.open(ModalComponent, {
