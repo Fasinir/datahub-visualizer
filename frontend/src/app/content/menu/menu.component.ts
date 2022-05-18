@@ -1,4 +1,6 @@
-import { Component} from '@angular/core';
+import {Component} from '@angular/core';
+import {ChartService} from "../../services/chart.service";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-menu',
@@ -6,4 +8,13 @@ import { Component} from '@angular/core';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent {
+  constructor(private chartService: ChartService) {
+  }
+
+  chartData: any = {};
+
+  notifierSubscription: Subscription = this.chartService.loadedData
+    .subscribe(data => {
+      this.chartData = data;
+    });
 }

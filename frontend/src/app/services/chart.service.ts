@@ -8,8 +8,6 @@ export class ChartService {
 
   loadedData: Subject<any> = new Subject<any>();
 
-  constructor() { }
-
   notifyAboutLoadedData(chartData: any){
     this.loadedData.next(chartData);
   }
