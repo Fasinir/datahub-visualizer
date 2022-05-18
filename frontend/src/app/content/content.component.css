@@ -39,3 +39,13 @@
   background-color: white;
   border-radius:12px;
 }
+#container_mobile > span {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 50px;
+  text-align: center;
+  word-wrap: break-word;
+  color: red;
+  display: block;
+}

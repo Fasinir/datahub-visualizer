@@ -5,9 +5,14 @@
       <span>{{mobileName}}</span>
     </div>
     <ng-container *ngIf="mobileName">
-      <div id="main-chart">
-        <app-chart [chartDatasets]="mobileDatasets" [labels]="mobileLabels" [outliers]="mobileOutliers"></app-chart>
-      </div>
+      <ng-container *ngIf="mobileIsSingleValue">
+        <span>{{mobileSingleValue}}</span>
+      </ng-container>
+      <ng-container *ngIf="!mobileIsSingleValue">
+        <div id="main-chart">
+          <app-chart [chartDatasets]="mobileDatasets" [labels]="mobileLabels" [outliers]="mobileOutliers"></app-chart>
+        </div>
+      </ng-container>
     </ng-container>
   </div>
   <div id="container_desktop">
@@ -16,7 +21,8 @@
         <app-single-value-tile [chartTitle]=chart.label [chartValue]=chart.value></app-single-value-tile>
       </div>
       <div *ngIf="!(chart.type === 'SINGLE_VALUE_CHART')">
-        <app-tile [chartType]=chartType(chart.type) [chartTitle]=chart.label (click)="displayChart(chart, true)"></app-tile>
+        <app-tile [chartType]=chartType(chart.type) [chartTitle]=chart.label
+                  (click)="displayChart(chart, true)"></app-tile>
       </div>
     </div>
   </div>

@@ -20,6 +20,9 @@ export class ContentComponent {
   mobileLabels: string[] = [];
   mobileDatasets: ChartDataset[] = [];
   mobileOutliers: Outlier[] = []
+
+  mobileIsSingleValue: boolean = false;
+  mobileSingleValue: number = 0;
   notifierSubscription: Subscription = this.chartService.loadedData
     .subscribe(data => {
       this.chartData = data;
@@ -27,7 +30,12 @@ export class ContentComponent {
 
   menuSubscription: Subscription = this.menuService.clickedChartData
     .subscribe(data => {
-      this.displayChart(data, false);
+      this.mobileIsSingleValue = data.type === 'SINGLE_VALUE_CHART';
+      if (this.mobileIsSingleValue){
+        this.mobileSingleValue = data.value
+        this.mobileName = data.label;
+      }
+      else this.displayChart(data, false);
     });
 
   constructor(private chartService: ChartService, private menuService: MenuService, private modalService: NgbModal) {
