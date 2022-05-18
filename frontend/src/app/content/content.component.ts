@@ -1,4 +1,4 @@
-import {Component, HostListener} from '@angular/core';
+import {Component} from '@angular/core';
 import {Subscription} from 'rxjs';
 import {ChartService} from '../services/chart.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
@@ -42,18 +42,7 @@ export class ContentComponent {
     modalRef.componentInstance.outliers = outliers;
   }
 
-  @HostListener('drop', ['$event']) 
-  onDrop(event: DragEvent) {
-    event.preventDefault();
-    event.stopPropagation();
-    console.log(event.dataTransfer);
-  }
-  
-
-  chartType(type
-              :
-              string
-  ) {
+  chartType(type: string) {
     if (type === "LINE_BAR_CHART") {
       return "arrow";
     }
