@@ -6,10 +6,12 @@
     </div>
     <ng-container *ngIf="mobileData.name">
       <ng-container *ngIf="mobileData.isSingleValue">
-        <span>{{mobileData.singleValue}}</span>
+        <div id="main-chart-single-value">
+          <span>{{mobileData.singleValue}}</span>
+        </div>
       </ng-container>
       <ng-container *ngIf="!mobileData.isSingleValue">
-        <div id="main-chart">
+        <div id="main-chart-line-bar">
           <app-chart [chartDatasets]="mobileData.datasets" [labels]="mobileData.labels"
                      [outliers]="mobileData.outliers">
           </app-chart>
