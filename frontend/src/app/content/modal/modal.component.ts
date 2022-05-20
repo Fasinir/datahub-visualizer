@@ -11,5 +11,4 @@ export class ModalComponent {
   @Input() chartLabels: string[] = [];
   @Input() chartDatasets: ChartDataset[] = [];
   @Input() outliers: Outlier[] = [];
-
 }

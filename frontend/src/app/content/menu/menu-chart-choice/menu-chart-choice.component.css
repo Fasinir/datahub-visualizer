@@ -1,7 +1,9 @@
-.menu_chart > a {
+.menu_chart > span {
   font-family: 'Inter';
   font-style: normal;
   font-weight: 500;
   font-size: 24px;
   color: white;
+  text-align: center;
+  display : inline-block;
 }

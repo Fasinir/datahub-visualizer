@@ -32,10 +32,26 @@
   gap: 60px
 }
 
-#main-chart {
+#main-chart-line-bar {
   height: calc(100vh - 194px);
   justify-content: center;
   align-items: center;
-  background-color: white;
+  background-color: grey;
   border-radius:12px;
+}
+
+#main-chart-single-value {
+  border-radius:12px;
+  background-color: grey;
+}
+
+#main-chart-single-value > span {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 50px;
+  text-align: center;
+  word-wrap: break-word;
+  color: red;
+  display: block;
 }
