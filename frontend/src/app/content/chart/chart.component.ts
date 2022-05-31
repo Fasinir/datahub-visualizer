@@ -15,7 +15,7 @@ export class ChartComponent implements OnChanges {
   chartOptions: ChartOptions = {
     responsive: true, maintainAspectRatio: false, color: 'black', scales: {
       x: {
-        reverse: true,
+       
         ticks: {
           color: 'black',
         }
