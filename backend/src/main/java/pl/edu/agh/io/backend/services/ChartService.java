@@ -19,8 +19,9 @@ public class ChartService {
         Map<String, Double> collectedData = new LinkedHashMap<>(); //a map for collecting data: key = timestamp, value = desired value
         for (LinkedHashMap<String, Object> sample : dataJson.results()) {
             String fullDate = (String) sample.get("timestamp");
+            String parsedDate = fullDate.substring(0, 10) + " " + fullDate.substring(11, 19);
             Double foundValue = getValueFromData(sample, fullPath);
-            collectedData.put(fullDate, foundValue);
+            collectedData.put(parsedDate, foundValue);
         }
 
         List<Double> yVals = new ArrayList<>();
@@ -79,7 +80,8 @@ public class ChartService {
         for (DataJson dataJson : tileData.tileData()) {
             for (LinkedHashMap<String, Object> sample : dataJson.results()) {
                 String fullDate = (String) sample.get("timestamp");
-                timestamps.add(fullDate);
+                String parsedDate = fullDate.substring(0, 10) + " " + fullDate.substring(11, 19);
+                timestamps.add(parsedDate);
             }
         }
 
