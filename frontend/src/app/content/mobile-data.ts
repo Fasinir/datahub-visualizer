@@ -6,6 +6,7 @@ export class MobileData {
   labels: string[] = [];
   datasets: ChartDataset[] = [];
   outliers: Outlier[] = [];
+  colors: string[] = [];
   isSingleValue: boolean = false;
   singleValue?: number;
 }

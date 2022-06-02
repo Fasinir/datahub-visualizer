@@ -13,7 +13,7 @@
       <ng-container *ngIf="!mobileData.isSingleValue">
         <div id="main-chart-line-bar">
           <app-chart [chartDatasets]="mobileData.datasets" [labels]="mobileData.labels"
-                     [outliers]="mobileData.outliers">
+                     [outliers]="mobileData.outliers" [colors] = "mobileData.colors">
           </app-chart>
         </div>
       </ng-container>
