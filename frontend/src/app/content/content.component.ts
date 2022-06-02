@@ -42,16 +42,24 @@ export class ContentComponent {
     let chartLabels: string[] = data.xVals;
     let chartDatasets: ChartDataset[] = [];
     let outliers: Outlier[] = [];
+    let colors: string[] = [];
 
     for (let set of data.chartData) {
       chartDatasets.push({label: set.label, data: set.yVals, type: set.type.toLowerCase(), spanGaps: true})
       outliers.push({outlierLow: set.outlierLow, outlierHigh: set.outlierHigh})
+
+      if(set.hasOwnProperty('color')){
+      colors.push(set.color)
+      } else {
+        colors.push("lightblue")
+      }
     }
     this.mobileData.name = data.label;
     this.mobileData.labels = data.xVals;
     this.mobileData.outliers = outliers;
     this.mobileData.datasets = chartDatasets;
     this.mobileData.isSingleValue = false;
+    this.mobileData.colors = colors;
 
     if (forDesktop) {
       const modalRef = this.modalService.open(ModalComponent, {
@@ -60,6 +68,7 @@ export class ContentComponent {
       modalRef.componentInstance.chartDatasets = chartDatasets;
       modalRef.componentInstance.chartLabels = chartLabels;
       modalRef.componentInstance.outliers = outliers;
+      modalRef.componentInstance.colors = colors;
     }
   }
 
