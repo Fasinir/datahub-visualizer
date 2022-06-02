@@ -43,7 +43,8 @@ export class ChartComponent implements OnChanges {
       dataset.backgroundColor = this.getColors(dataset, outlier, color)
       dataset.hoverBackgroundColor = dataset.backgroundColor;
     } else if (dataset.type == "line") {
-      dataset.pointBackgroundColor = this.getColors(dataset, outlier, color)
+      dataset.pointBackgroundColor = this.getColors(dataset, outlier, color);
+      dataset.borderColor = color;
       dataset.pointRadius = 4
     }
   }
