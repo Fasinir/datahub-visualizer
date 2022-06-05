@@ -3,15 +3,16 @@ import { ChartDataset } from 'chart.js';
 import { Outlier } from '../chart/outliers.model';
 import { ModalComponent } from '../modal/modal.component';
 
+
 @Component({
   selector: 'app-tile',
   templateUrl: './tile.component.html',
   styleUrls: ['./tile.component.css']
 })
-export class TileComponent implements OnInit {
-
+export class TileComponent {
   @Input() chartType: string = "placeholder";
   @Input() chartTitle: string = "Wykres";
+
   @Input() chart: any ={};
   normal: boolean = false;
   chartLabels: string[] = this.chart.xVals;
@@ -31,4 +32,5 @@ export class TileComponent implements OnInit {
       this.outliers.push({outlierLow: set.outlierLow, outlierHigh: set.outlierHigh})
     }
   }
+
 }

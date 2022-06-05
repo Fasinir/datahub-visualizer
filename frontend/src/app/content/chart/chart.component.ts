@@ -15,6 +15,8 @@ export class ChartComponent implements OnChanges {
   @Input() normal: boolean = true;
   chartOptions: ChartOptions = {};
 
+  @Input() colors: string[] = [];
+  
   ngOnChanges(): void {
     this.chartOptions = {
       plugins:{
@@ -42,22 +44,23 @@ export class ChartComponent implements OnChanges {
     for (let _i = 0; _i < this.chartDatasets.length; _i++) {
       let dataset = this.chartDatasets[_i];
       let outlier = this.outliers[_i];
-      this.datasetManipulation(dataset, outlier)
+      let color = this.colors[_i];
+      this.datasetManipulation(dataset, outlier, color)
     }
   }
 
-  datasetManipulation(dataset: ChartDataset, outlier: Outlier) {
+  datasetManipulation(dataset: ChartDataset, outlier: Outlier, color: string) {
     if (dataset.type == "bar") {
-      dataset.backgroundColor = this.getColors(dataset, outlier)
+      dataset.backgroundColor = this.getColors(dataset, outlier, color)
       dataset.hoverBackgroundColor = dataset.backgroundColor;
     } else if (dataset.type == "line") {
-      dataset.pointBackgroundColor = this.getColors(dataset, outlier)
+      dataset.pointBackgroundColor = this.getColors(dataset, outlier, color);
+      dataset.borderColor = color;
       dataset.pointRadius = 4
     }
   }
 
-  getColors(dataset: ChartDataset, outlier: Outlier) {
-    const color = this.getRandomColor();
+  getColors(dataset: ChartDataset, outlier: Outlier, color: string) {
     return dataset.data.map((v) => (v == null || ((outlier.outlierLow == null || v >= outlier.outlierLow)
       && (outlier.outlierHigh == null || v <= outlier.outlierHigh)) ? color : "red"));
   }

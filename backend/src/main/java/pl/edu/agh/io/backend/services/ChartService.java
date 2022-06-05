@@ -19,8 +19,9 @@ public class ChartService {
         Map<String, Double> collectedData = new LinkedHashMap<>(); //a map for collecting data: key = timestamp, value = desired value
         for (LinkedHashMap<String, Object> sample : dataJson.results()) {
             String fullDate = (String) sample.get("timestamp");
+            String parsedDate = extractDateAndTime(fullDate);
             Double foundValue = getValueFromData(sample, fullPath);
-            collectedData.put(fullDate, foundValue);
+            collectedData.put(parsedDate, foundValue);
         }
 
         List<Double> yVals = new ArrayList<>();
@@ -29,11 +30,12 @@ public class ChartService {
         }
 
         ChartData newChart = new ChartData((String) dataConfig.get("label"), ChartType.valueOf((String) dataConfig.get("chartType")),
-                yVals, castOutlier(dataConfig.get("outlierLow")), castOutlier(dataConfig.get("outlierHigh")));
+                yVals, castOutlier(dataConfig.get("outlierLow")), castOutlier(dataConfig.get("outlierHigh")),
+                (String) dataConfig.get("color"));
         newTile.addChartData(newChart);
     }
 
-    private Double castOutlier(Object outlier){
+    private Double castOutlier(Object outlier) {
         if (outlier instanceof Integer integer)
             return integer.doubleValue();
         return (Double) outlier;
@@ -45,8 +47,7 @@ public class ChartService {
 
         if (tileConfig.get("maxTime") == null || tileConfig.get("minTime") == null) {
             getLatestData(newTileData, endpointsList);
-        }
-        else {
+        } else {
             String dateRange = "?date_range=" + tileConfig.get("minTime") + "~" + tileConfig.get("maxTime");
             getTimeRangeData(newTileData, endpointsList, dateRange);
         }
@@ -66,7 +67,7 @@ public class ChartService {
             DataJson totalTimeDataJson = new DataJson("", "", new ArrayList<>());
 
             DataJson dataJson = getDataAPI((String) endpoint.get("url") + dateRange);
-            while(dataJson != null && !dataJson.results().isEmpty()) {
+            while (dataJson != null && !dataJson.results().isEmpty()) {
                 totalTimeDataJson.addExtraResults(dataJson);
                 dataJson = getDataAPI(dataJson.next().replace("%7E", "~"));
             }
@@ -79,7 +80,8 @@ public class ChartService {
         for (DataJson dataJson : tileData.tileData()) {
             for (LinkedHashMap<String, Object> sample : dataJson.results()) {
                 String fullDate = (String) sample.get("timestamp");
-                timestamps.add(fullDate);
+                String parsedDate = extractDateAndTime(fullDate);
+                timestamps.add(parsedDate);
             }
         }
 
@@ -108,5 +110,9 @@ public class ChartService {
             temp = (LinkedHashMap<String, Object>) temp.get(j);
         }
         return (Double) temp.get(fullPath.lastPathElem());
+    }
+
+    String extractDateAndTime(String fullDate) {
+        return fullDate.substring(0, 10) + " " + fullDate.substring(11, 19);
     }
 }

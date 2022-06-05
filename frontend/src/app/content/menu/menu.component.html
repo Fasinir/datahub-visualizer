@@ -1,10 +1,5 @@
 <div id="burger_menu">
-  <app-menu-chart-choice></app-menu-chart-choice>
-  <app-menu-chart-choice></app-menu-chart-choice>
-  <app-menu-chart-choice></app-menu-chart-choice>
-  <app-menu-chart-choice></app-menu-chart-choice>
-  <app-menu-chart-choice></app-menu-chart-choice>
-  <app-menu-chart-choice></app-menu-chart-choice>
-  <app-menu-chart-choice></app-menu-chart-choice>
-  <app-menu-chart-choice></app-menu-chart-choice>
+  <ng-container *ngFor="let chart of chartData.tiles">
+    <app-menu-chart-choice [chartData]=chart></app-menu-chart-choice>
+  </ng-container>
 </div>
