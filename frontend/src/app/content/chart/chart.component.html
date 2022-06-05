@@ -1,9 +1,8 @@
-<div class="chart-wrapper">
+<div class="chart-wrapper" [ngClass]="{'minimal': normal==false}">
     <canvas baseChart
         [datasets]="chartDatasets"
         [labels]="labels"
         [options]="chartOptions"
-        [legend]="true"
         [type] = "chartType"
     >
     </canvas>

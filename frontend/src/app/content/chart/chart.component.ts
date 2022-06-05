@@ -12,23 +12,33 @@ export class ChartComponent implements OnChanges {
   @Input() chartDatasets: ChartDataset[] = [];
   @Input() outliers: Outlier[] = [];
   @Input() labels: string[] = [];
-  chartOptions: ChartOptions = {
-    responsive: true, maintainAspectRatio: false, color: 'black', scales: {
-      x: {
-       
-        ticks: {
-          color: 'black',
-        }
-      }, y: {
-        ticks: {
-          color: 'black',
-        }
-      }
-    }
-
-  };
+  @Input() normal: boolean = true;
+  chartOptions: ChartOptions = {};
 
   ngOnChanges(): void {
+    this.chartOptions = {
+      plugins:{
+          legend:{
+            display:this.normal
+          },
+     
+      },
+      responsive: true, maintainAspectRatio: false, color: 'black', scales: {
+        x: {
+          display:this.normal,
+          ticks: {
+            color: 'black',
+          }
+        }, y: {
+        
+          ticks: {
+            color: 'black',
+          }
+        }
+      }
+  
+    };
+    console.log(this.chartOptions)
     for (let _i = 0; _i < this.chartDatasets.length; _i++) {
       let dataset = this.chartDatasets[_i];
       let outlier = this.outliers[_i];

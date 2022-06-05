@@ -18,7 +18,7 @@ export class LoadFileButtonComponent implements OnInit {
   }
   
   subscription: Subscription = new Subscription;  
-  source = interval(10000);
+  source = interval(100000);
   
   ngOnInit(): void {
     this.subscription = this.source.subscribe(val => this.loadFileConfig());
