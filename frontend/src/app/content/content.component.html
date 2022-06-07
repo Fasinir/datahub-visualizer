@@ -28,8 +28,8 @@
 
         <!-- <app-tile [chart]=chart [chartType]=chartType(chart.type) [chartTitle]=chart.label (click)="openModal(chart)"></app-tile> -->
 
-        <app-tile [chartType]=chartType(chart.type) [chartTitle]=chart.label
-                  (click)="displayChart(chart, true)"></app-tile>
+        <app-tile [chart]=chart [chartType]=chartType(chart.type) [chartTitle]=chart.label
+                  (click)="displayChart(chart, true)" [colors] = "getColors(chart)"></app-tile>
 
       </div>
     </div>

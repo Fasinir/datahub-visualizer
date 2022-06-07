@@ -61,6 +61,7 @@ export class ChartComponent implements OnChanges {
   }
 
   getColors(dataset: ChartDataset, outlier: Outlier, color: string) {
+    console.log(color)
     return dataset.data.map((v) => (v == null || ((outlier.outlierLow == null || v >= outlier.outlierLow)
       && (outlier.outlierHigh == null || v <= outlier.outlierHigh)) ? color : "red"));
   }

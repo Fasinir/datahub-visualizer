@@ -12,7 +12,7 @@ import { ModalComponent } from '../modal/modal.component';
 export class TileComponent {
   @Input() chartType: string = "placeholder";
   @Input() chartTitle: string = "Wykres";
-
+  @Input() colors: string[] = [];
   @Input() chart: any ={};
   normal: boolean = false;
   chartLabels: string[] = this.chart.xVals;
