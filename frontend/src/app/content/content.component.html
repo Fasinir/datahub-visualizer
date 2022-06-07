@@ -25,9 +25,6 @@
         <app-single-value-tile [chartTitle]=chart.label [chartValue]=chart.value></app-single-value-tile>
       </div>
       <div *ngIf="!(chart.type === 'SINGLE_VALUE_CHART')">
-
-        <!-- <app-tile [chart]=chart [chartType]=chartType(chart.type) [chartTitle]=chart.label (click)="openModal(chart)"></app-tile> -->
-
         <app-tile [chart]=chart [chartType]=chartType(chart.type) [chartTitle]=chart.label
                   (click)="displayChart(chart, true)" [colors] = "getColors(chart)"></app-tile>
 
