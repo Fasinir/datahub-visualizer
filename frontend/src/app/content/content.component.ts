@@ -18,7 +18,7 @@ export class ContentComponent {
 
   chartData: any = {};
   mobileData: MobileData = new MobileData();
-
+  
 
   notifierSubscription: Subscription = this.chartService.loadedData
     .subscribe(data => {
@@ -65,6 +65,14 @@ export class ContentComponent {
       modalRef.componentInstance.outliers = outliers;
       modalRef.componentInstance.colors = colors;
     }
+  }
+
+  getColors(data: any) {
+    let colors: string[] = [];
+    for (let set of data.chartData) {
+      colors.push(set.color)
+    }
+    return colors;
   }
 
   chartType(type: string) {

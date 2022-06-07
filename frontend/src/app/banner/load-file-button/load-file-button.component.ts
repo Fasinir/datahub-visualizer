@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {ChartService} from '../../services/chart.service';
+import {DataService} from '../../services/data.service';
+import {Subscription, interval} from 'rxjs'; 
 import { Router } from '@angular/router';
-import { ChartService } from '../../services/chart.service';
-import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-load-file-button',
@@ -14,10 +15,21 @@ export class LoadFileButtonComponent implements OnInit {
   @ViewChild('fileInput')
   fileInput!: ElementRef;
 
+
   constructor(private http: HttpClient, private dataService: DataService, private chartService: ChartService, private router: Router) {
+
+  }
+  
+  subscription: Subscription = new Subscription;  
+  source = interval(100000);
+  
+  ngOnInit(): void {
+    this.subscription = this.source.subscribe(val => this.loadFileConfig());
+    this.loadFileConfig();
   }
 
-  ngOnInit(): void {
+  loadFileConfig() {
+    console.log("load config");
     let config = this.dataService.getStoredConfig();
     if(config) {
       this.dataService.postConfigFile(config).subscribe(
