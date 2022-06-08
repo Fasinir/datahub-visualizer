@@ -18,7 +18,7 @@ export class ContentComponent {
 
   chartData: any = {};
   mobileData: MobileData = new MobileData();
-  
+
 
   notifierSubscription: Subscription = this.chartService.loadedData
     .subscribe(data => {
@@ -50,7 +50,7 @@ export class ContentComponent {
       colors.push(set.color)
     }
     this.mobileData.name = data.label;
-    this.mobileData.labels = data.xVals;
+    this.mobileData.labels = data.xVals.map((date: string) => date.substring(11))
     this.mobileData.outliers = outliers;
     this.mobileData.datasets = chartDatasets;
     this.mobileData.isSingleValue = false;
