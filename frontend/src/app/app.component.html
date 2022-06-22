@@ -1,0 +1,6 @@
+<div class="app">
+  <app-banner (menuEmitter)="onMenuChange()"></app-banner>
+  <app-content [hidden]="menuVisible"></app-content>
+  <app-menu [hidden]="!menuVisible"></app-menu>
+  <app-footer></app-footer>
+</div>

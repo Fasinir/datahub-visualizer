@@ -1,0 +1,34 @@
+<div id="app_content">
+  <router-outlet></router-outlet>
+  <div id="container_mobile">
+    <div id="main-chart-title">
+      <span>{{mobileData.name}}</span>
+    </div>
+    <ng-container *ngIf="mobileData.name">
+      <ng-container *ngIf="mobileData.isSingleValue">
+        <div id="main-chart-single-value">
+          <span>{{mobileData.singleValue}}</span>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="!mobileData.isSingleValue">
+        <div id="main-chart-line-bar">
+          <app-chart [chartDatasets]="mobileData.datasets" [labels]="mobileData.labels"
+                     [outliers]="mobileData.outliers" [colors] = "mobileData.colors">
+          </app-chart>
+        </div>
+      </ng-container>
+    </ng-container>
+  </div>
+  <div id="container_desktop">
+    <div *ngFor="let chart of chartData.tiles">
+      <div *ngIf="chart.type === 'SINGLE_VALUE_CHART'">
+        <app-single-value-tile [chartTitle]=chart.label [chartValue]=chart.value></app-single-value-tile>
+      </div>
+      <div *ngIf="!(chart.type === 'SINGLE_VALUE_CHART')">
+        <app-tile [chart]=chart [chartType]=chartType(chart.type) [chartTitle]=chart.label
+                  (click)="displayChart(chart, true)" [colors] = "getColors(chart)"></app-tile>
+
+      </div>
+    </div>
+  </div>
+</div>

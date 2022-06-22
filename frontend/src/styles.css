@@ -1,0 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style-type: none;
+  color: #1f1f1f;
+  outline: none;
+  box-sizing: border-box;
+}
+
+:root {
+  --main-color-light: #828282;
+  --main-color-dark: #181818;
+  --main-color-gray: #404040;
+}
+
+body {
+  background-color: var(--main-color-dark);
+}
+
+.chart_modal{
+  z-index: 1060;
+}
+
+.modal-dialog {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow-y: auto;
+  min-height: calc(100vh - 60px);
+  max-width: calc(80vw);
+}
+
+.modal-content {
+  height: calc(80vh);
+  display: block;
+}
+
+/* breakpoints */
+@media (min-width: 0) {
+  /* Hide desktop */
+  #container_desktop > *{
+    display: none;
+  }
+
+  #container_mobile {
+    display: block;
+  }
+
+  .mobile_btn {
+    visibility: visible;
+  }
+
+  .app_header > .container-fluid {
+    flex-direction: row-reverse;
+  }
+}
+
+@media (min-height: 650px) and (min-width: 768px) {
+  /* Hide mobile */
+  #container_mobile {
+    display: none;
+  }
+
+  #app_content, #container_desktop > *{
+    display: block;
+  }
+
+  .mobile_btn {
+    visibility: hidden;
+  }
+
+  .app_header > .container-fluid {
+    flex-direction: row;
+  }
+}

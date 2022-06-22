@@ -1,0 +1,47 @@
+.tile-container {
+  display: block;
+  width: calc(1440px / 6);
+  height: calc(1440px / 6);
+  background-color: var(--main-color-light);
+  border-radius: 5px;
+  padding: 20px;
+  transition: opacity 0.3s ease;
+}
+
+.tile-container:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.tile-header {
+  text-align: center;
+  height: 60px;
+}
+
+.tile-header span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  /* autoprefixer: ignore next */
+  -webkit-box-orient: vertical;
+  white-space: normal;
+
+  vertical-align: top;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--main-color-dark);
+}
+
+.tile-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tile-image img {
+  width: 140px;
+  height: 140px;
+}

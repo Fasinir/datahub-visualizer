@@ -1,0 +1,9 @@
+<div class="chart-wrapper" [ngClass]="{'minimal': normal==false}">
+    <canvas baseChart
+        [datasets]="chartDatasets"
+        [labels]="labels"
+        [options]="chartOptions"
+        [type] = "chartType"
+    >
+    </canvas>
+</div>
